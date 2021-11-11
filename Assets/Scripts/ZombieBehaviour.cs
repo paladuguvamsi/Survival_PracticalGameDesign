@@ -3,6 +3,7 @@ using System.Collections.Generic;
 //using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public enum CryptoState
 {
@@ -26,6 +27,8 @@ public class ZombieBehaviour : MonoBehaviour
 
     public float AttackRate = 3f;
     private float nextTimeToAttack = 0f;
+
+    public Text zombieCount;
 
     public EnemyQuest quest;
 
@@ -99,6 +102,9 @@ public class ZombieBehaviour : MonoBehaviour
     {
         quest.KillZombie();
         Destroy(gameObject);
+        int count = int.Parse(zombieCount.text) + 1;
+        zombieCount.text = count.ToString();
+
     }
 
     public void Attack()

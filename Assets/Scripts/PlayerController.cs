@@ -105,10 +105,10 @@ public class PlayerController : LivingEntity
             transform.Rotate(Vector3.up * mouseX);
             
 
-            if (Input.GetKeyUp(KeyCode.M))
+            if (Input.GetKeyUp(KeyCode.H))
                 TakeDamage(20.0f);
 
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.M))
             {
                 miniMap.SetActive(!miniMap.activeInHierarchy);
             }
