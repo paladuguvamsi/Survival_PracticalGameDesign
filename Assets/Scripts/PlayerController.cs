@@ -28,7 +28,7 @@ public class PlayerController : LivingEntity
 
     public float distanceToPlayer;
 
-    //private float XRotation = 0.0f;
+    private float XRotation = 0.0f;
 
     [Header("MiniMap")]
     public GameObject miniMap;
@@ -62,17 +62,17 @@ public class PlayerController : LivingEntity
             }
 
             //Input for WebGL and Desktop
-            //float x = Input.GetAxis("Horizontal");
-            //float z = Input.GetAxis("Vertical");
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
-            /*if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(0))
             {
                 gun.Fire();
-            }*/
+            }
 
             //Input for Mobile
-            float x = joystick.Horizontal;
-            float z = joystick.Vertical;
+            //float x = joystick.Horizontal;
+            //float z = joystick.Vertical;
 
 
             velocity.y += gravity * Time.deltaTime;
@@ -94,7 +94,7 @@ public class PlayerController : LivingEntity
 
             controller.Move(velocity * Time.deltaTime);
 
-            /* //Moved this script to cam controller
+            //Moved this script to cam controller
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -103,10 +103,16 @@ public class PlayerController : LivingEntity
 
             cam.transform.localRotation = Quaternion.Euler(XRotation, 0.0f, 0.0f);
             transform.Rotate(Vector3.up * mouseX);
-            */
+            
 
             if (Input.GetKeyUp(KeyCode.M))
                 TakeDamage(20.0f);
+
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                miniMap.SetActive(!miniMap.activeInHierarchy);
+            }
+
         }
     }
 
