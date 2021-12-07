@@ -49,7 +49,7 @@ public class PauseScript : MonoBehaviour
     }
     public void MainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("FinalMenu");
     }
     
 }

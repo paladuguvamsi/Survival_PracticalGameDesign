@@ -28,7 +28,7 @@ public class PlayerController : LivingEntity
 
     public float distanceToPlayer;
 
-    private float XRotation = 0.0f;
+    //private float XRotation = 0.0f;
 
     [Header("MiniMap")]
     public GameObject miniMap;
@@ -85,7 +85,7 @@ public class PlayerController : LivingEntity
 
             controller.Move(move * maxSpeed * Time.deltaTime);
 
-            if (Input.GetButton("Jump") && isGrounded)
+            if (Input.GetButton("Jump"))
             {
                 Jump();
             }
@@ -94,7 +94,7 @@ public class PlayerController : LivingEntity
 
             controller.Move(velocity * Time.deltaTime);
 
-            //Moved this script to cam controller
+            /* //Moved this script to cam controller
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -103,16 +103,16 @@ public class PlayerController : LivingEntity
 
             cam.transform.localRotation = Quaternion.Euler(XRotation, 0.0f, 0.0f);
             transform.Rotate(Vector3.up * mouseX);
-            
+            */
 
-            if (Input.GetKeyUp(KeyCode.H))
-                TakeDamage(20.0f);
-
-            if (Input.GetKeyDown(KeyCode.M))
-            {
+            //toggle the MiniMap on/off\
+            if (Input.GetKeyUp(KeyCode.M)) 
                 miniMap.SetActive(!miniMap.activeInHierarchy);
-            }
+            //TakeDamage(20.0f);
 
+            //toggle the Inventory on/off\
+            if (Input.GetKeyUp(KeyCode.M))
+                Inventory.SetActive(!Inventory.activeInHierarchy);
         }
     }
 
@@ -129,14 +129,14 @@ public class PlayerController : LivingEntity
     public void ToggleMiniMap()
     {
         //toggle the MiniMap on/off\
-        miniMap.SetActive(!miniMap.activeInHierarchy);
+        //miniMap.SetActive(!miniMap.activeInHierarchy);
     }
 
     //mobile control code to toggle Inventory
     public void ToggleInventory()
     {
         //toggle the Inventory on/off\
-        Inventory.SetActive(!Inventory.activeInHierarchy);
+        //Inventory.SetActive(!Inventory.activeInHierarchy);
     }
 
 
@@ -157,6 +157,6 @@ public class PlayerController : LivingEntity
 
     public override void OnDeath()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("GameOver");
     }
 }
